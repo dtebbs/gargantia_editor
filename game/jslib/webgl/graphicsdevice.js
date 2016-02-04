@@ -3458,7 +3458,8 @@ var WebGLTechniqueParameters = (function () {
 // TechniqueParameterBuffer
 //
 var techniqueParameterBufferCreate = function techniqueParameterBufferCreateFn(params) {
-    if (Float32Array.prototype.map === undefined) {
+    if (!Float32Array.prototype._tz_setFunctions) {
+        Float32Array.prototype._tz_setFunctions = true;
         Float32Array.prototype.map = function techniqueParameterBufferMap(offset, numFloats) {
             if (offset === undefined) {
                 offset = 0;
